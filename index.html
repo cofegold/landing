@@ -3,285 +3,823 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>منوی کافه رستا</title>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+<title>Flavored | کافه گلد</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --coffee-dark: #2c1810;
-  --coffee: #6f4e37;
-  --coffee-light: #a67c52;
-  --cream: #f5ebe0;
-  --cream-2: #ede0d4;
-  --gold: #c9a227;
+  --brown: #4a2c1a;
+  --brown-2: #6b4423;
+  --brown-3: #8b5a2b;
+  --cream: #e8dcc8;
+  --cream-2: #f0e6d2;
+  --beige: #d9c9b0;
+  --gold: #c9a961;
+  --text: #2c1810;
   --text-soft: #7a6a5f;
   --white: #fff;
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-dark: rgba(74, 44, 26, 0.85);
 }
+
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Vazirmatn', sans-serif;
-  background: var(--cream);
-  color: var(--coffee-dark);
-  line-height: 1.8;
+  background: linear-gradient(135deg, #e8dcc8 0%, #d9c9b0 50%, #c9b89a 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
   min-height: 100vh;
+  position: relative;
+}
+
+/* ===== Background coffee beans ===== */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+body::before {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201, 169, 97, 0.3), transparent 70%);
+  top: -100px; left: -100px;
+}
+body::after {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(139, 90, 43, 0.25), transparent 70%);
+  bottom: -150px; right: -150px;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
 }
 
 /* ===== Header ===== */
 .header {
-  text-align: center;
-  padding: 50px 20px 30px;
-  background: linear-gradient(180deg, var(--coffee-dark), #3d2418);
-  color: #fff;
+  padding: 26px 0;
+  position: relative;
+  z-index: 10;
+}
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--brown);
+}
+.logo-icon {
+  font-size: 30px;
+  filter: drop-shadow(0 4px 8px rgba(74, 44, 26, 0.3));
+}
+.logo-text small {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--brown-3);
+  letter-spacing: 0.5px;
+  margin-top: -4px;
+}
+.nav-menu {
+  display: flex;
+  gap: 36px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--brown);
+}
+.nav-menu a {
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-menu a:hover { color: var(--brown-3); }
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; right: 0;
+  width: 0; height: 2px;
+  background: var(--brown-2);
+  transition: width 0.3s;
+  border-radius: 2px;
+}
+.nav-menu a:hover::after { width: 100%; }
+
+/* ===== Hero ===== */
+.hero {
+  padding: 40px 0 60px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ===== Glass Card ===== */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 50px rgba(74, 44, 26, 0.08);
+  padding: 32px;
   position: relative;
   overflow: hidden;
 }
-.header::before {
-  content: '';
-  position: absolute;
-  top: -50px; right: -50px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(201, 162, 39, 0.2), transparent 70%);
-  border-radius: 50%;
+
+/* ===== Hero Left: App Preview ===== */
+.app-preview {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 28px;
+  align-items: start;
 }
-.header::after {
-  content: '';
-  position: absolute;
-  bottom: -60px; left: -60px;
-  width: 240px; height: 240px;
-  background: radial-gradient(circle, rgba(201, 162, 39, 0.15), transparent 70%);
-  border-radius: 50%;
+.phone-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 24px;
+  padding: 18px;
+  width: 250px;
+  box-shadow: 0 15px 40px rgba(74, 44, 26, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  display: inline-flex;
+.phone-header {
+  display: flex;
   align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 14px;
+}
+.phone-header .back { font-size: 16px; color: var(--brown-3); }
+.view-menu-btn {
+  display: inline-block;
+  padding: 7px 18px;
+  background: var(--brown);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.view-menu-btn:hover { background: var(--brown-2); transform: scale(1.03); }
+
+.icon-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  justify-content: center;
+}
+.icon-chip {
+  width: 36px; height: 36px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(74, 44, 26, 0.08);
+}
+.icon-chip:hover,
+.icon-chip.active {
+  background: var(--brown);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(74, 44, 26, 0.25);
+}
+.icon-chip.active { color: #fff; }
+
+.phone-cups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   margin-bottom: 14px;
+}
+.mini-cup {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 12px 8px;
+  text-align: center;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.mini-cup:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(74, 44, 26, 0.12);
+}
+.cup-img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #d9b78a 0%, #b8895a 40%, #8b5a2b 100%);
   position: relative;
-  z-index: 1;
+  margin-bottom: 8px;
+  box-shadow: inset 0 -8px 16px rgba(74, 44, 26, 0.3);
 }
-.logo-icon { font-size: 34px; }
-.header h1 {
-  font-size: 42px;
-  font-weight: 900;
-  margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
+.cup-img::after {
+  content: '';
+  position: absolute;
+  top: 20%; left: 25%;
+  width: 50%; height: 35%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent 70%);
 }
-.header p {
-  color: #d4c4b8;
-  font-size: 15px;
-  position: relative;
-  z-index: 1;
+.cup-img.heart::before {
+  content: '❤';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #8b4513;
+  font-size: 22px;
+  z-index: 2;
 }
-.divider {
-  width: 80px;
-  height: 3px;
-  background: var(--gold);
-  margin: 20px auto 0;
-  border-radius: 3px;
-  position: relative;
-  z-index: 1;
+.mini-cup h4 {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 2px;
 }
-
-/* ===== Container ===== */
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
+.mini-cup p {
+  font-size: 9px;
+  color: var(--text-soft);
+  line-height: 1.3;
 }
-
-/* ===== Tabs ===== */
-.tabs {
+.mini-cup .price-row {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 30px 20px;
-  flex-wrap: wrap;
-  background: var(--cream);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  backdrop-filter: blur(10px);
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 9px;
 }
-.tab {
-  padding: 10px 26px;
-  background: #fff;
-  border: 1.5px solid rgba(111, 78, 55, 0.15);
+.mini-cup .price-row span { color: var(--brown-2); font-weight: 700; }
+.mini-cup .heart-icon {
+  color: var(--brown-3);
+  cursor: pointer;
+}
+
+.moccaccino-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 11px;
+}
+.moccaccino-card h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brown);
+  margin-bottom: 4px;
+}
+.moccaccino-card p {
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: var(--brown);
+  border-radius: 50px;
+  padding: 10px 16px;
+  margin-top: 14px;
+}
+.bottom-nav span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.bottom-nav span.active { color: #fff; }
+.bottom-nav span:hover { color: #fff; }
+
+/* ===== Right of phone: text ===== */
+.app-info h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--brown);
+  margin-bottom: 14px;
+}
+.app-info p {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+.store-buttons {
+  display: flex;
+  gap: 10px;
+}
+.store-btn {
+  width: 42px; height: 42px;
+  background: var(--brown);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.store-btn:hover {
+  background: var(--brown-2);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(74, 44, 26, 0.3);
+}
+
+/* ===== Big Coffee Hero (Right) ===== */
+.coffee-hero {
+  text-align: right;
+  position: relative;
+}
+.coffee-hero .logo-sm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--brown);
+  margin-bottom: 30px;
+}
+.coffee-hero .logo-sm small {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  color: var(--brown-3);
+}
+.coffee-hero h1 {
+  font-size: 62px;
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--brown);
+  margin-bottom: 28px;
+  letter-spacing: -1px;
+}
+.coffee-hero h1 span {
+  display: block;
+  color: var(--brown-3);
+}
+.cta-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--brown);
+  color: #fff;
   border-radius: 50px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-soft);
   cursor: pointer;
   transition: all 0.3s;
+  margin-bottom: 24px;
+  border: none;
   font-family: inherit;
 }
-.tab:hover {
-  border-color: var(--coffee);
-  color: var(--coffee);
+.cta-btn:hover {
+  background: var(--brown-2);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(74, 44, 26, 0.3);
 }
-.tab.active {
-  background: var(--coffee);
-  color: #fff;
-  border-color: var(--coffee);
-  box-shadow: 0 8px 20px rgba(111, 78, 55, 0.3);
+
+.hero-icon-row {
+  display: flex;
+  gap: 10px;
+}
+.hero-icon-row .icon-chip {
+  width: 44px; height: 44px;
+  font-size: 18px;
+}
+
+.big-cup {
+  position: absolute;
+  top: -20px;
+  left: -40px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f5e6d0 0%, #e0c9a8 30%, #b8895a 70%, #8b5a2b 100%);
+  box-shadow: 
+    inset 0 -20px 40px rgba(74, 44, 26, 0.3),
+    0 40px 80px rgba(74, 44, 26, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatCup 5s ease-in-out infinite;
+}
+.big-cup::before {
+  content: '';
+  position: absolute;
+  top: 25%; left: 30%;
+  width: 40%; height: 30%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
+}
+.big-cup::after {
+  content: '❤';
+  position: absolute;
+  top: 45%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6b3410;
+  font-size: 60px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+@keyframes floatCup {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
 }
 
 /* ===== Menu Section ===== */
 .menu-section {
-  padding: 20px 0 80px;
+  padding: 40px 0 60px;
 }
-.menu-category {
-  margin-bottom: 60px;
-  scroll-margin-top: 100px;
-}
-.category-title {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--coffee-dark);
+.section-title {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--brown);
   margin-bottom: 30px;
-  padding-bottom: 14px;
-  border-bottom: 2px dashed rgba(111, 78, 55, 0.2);
+  text-align: right;
 }
-.category-title .ico {
-  width: 50px;
-  height: 50px;
-  background: rgba(111, 78, 55, 0.1);
-  border-radius: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
-}
-
-/* ===== Menu Items ===== */
-.menu-list {
+.menu-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
 .menu-item {
-  background: #fff;
-  padding: 20px 22px;
-  border-radius: 16px;
-  border: 1px solid rgba(111, 78, 55, 0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  transition: all 0.3s ease;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 15px 40px rgba(74, 44, 26, 0.08);
+  transition: all 0.4s ease;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
-.menu-item::before {
+.menu-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(74, 44, 26, 0.15);
+  background: rgba(255, 255, 255, 0.75);
+}
+.menu-item .cup-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  background: radial-gradient(circle at 35% 30%, #f5e6d0 0%, #e0c9a8 30%, #b8895a 70%, #8b5a2b 100%);
+  position: relative;
+  box-shadow: 
+    inset 0 -15px 30px rgba(74, 44, 26, 0.3),
+    0 15px 30px rgba(74, 44, 26, 0.2);
+}
+.menu-item .cup-photo::before {
   content: '';
   position: absolute;
-  right: 0; top: 0;
-  width: 4px; height: 100%;
-  background: linear-gradient(180deg, var(--coffee), var(--gold));
-  transform: scaleY(0);
-  transition: transform 0.4s;
+  top: 22%; left: 28%;
+  width: 45%; height: 32%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
 }
-.menu-item:hover::before { transform: scaleY(1); }
-.menu-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(111, 78, 55, 0.13);
-  border-color: transparent;
+.menu-item .cup-photo.heart::after {
+  content: '❤';
+  position: absolute;
+  top: 48%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6b3410;
+  font-size: 32px;
 }
-
-.item-info {
+.menu-item .cup-photo.leaf::after {
+  content: '🍃';
+  position: absolute;
+  top: 48%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+}
+.menu-item .cup-photo.swirl::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%; height: 55%;
+  border-radius: 50%;
+  border: 3px solid rgba(107, 52, 16, 0.5);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+.menu-item h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--brown);
+  margin-bottom: 4px;
+}
+.menu-item .desc {
+  font-size: 11px;
+  color: var(--text-soft);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.menu-item .actions {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  flex: 1;
-  min-width: 0;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
 }
-.item-icon {
-  width: 54px;
-  height: 54px;
-  min-width: 54px;
-  background: linear-gradient(135deg, var(--cream-2), var(--cream));
-  border-radius: 14px;
+.action-btn {
+  width: 32px; height: 32px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 13px;
+  color: var(--brown-3);
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 1px solid rgba(74, 44, 26, 0.08);
 }
-.item-text h3 {
-  font-size: 17px;
+.action-btn:hover {
+  background: var(--brown);
+  color: #fff;
+  transform: scale(1.1);
+}
+.price-tag {
+  display: inline-block;
+  padding: 6px 20px;
+  background: var(--brown);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 13px;
   font-weight: 700;
-  margin-bottom: 4px;
-  color: var(--coffee-dark);
 }
-.item-text p {
+
+/* ===== Bottom Section ===== */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  padding: 40px 0 80px;
+}
+
+/* Reserve Card */
+.reserve-card {
+  background: var(--glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 28px;
+  padding: 36px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 50px rgba(74, 44, 26, 0.1);
+}
+.reserve-card .badge {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(74, 44, 26, 0.1);
+  color: var(--brown);
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+.reserve-card h2 {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--brown);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.reserve-card p {
   font-size: 13px;
   color: var(--text-soft);
-  line-height: 1.5;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  line-height: 1.9;
+  margin-bottom: 24px;
 }
-
-.item-price {
-  font-size: 17px;
-  font-weight: 900;
-  color: var(--coffee);
-  white-space: nowrap;
-  text-align: left;
-}
-.item-price small {
-  font-size: 11px;
-  font-weight: 400;
-  color: var(--text-soft);
-  display: block;
-}
-
-/* ===== Badge ===== */
-.badge-hot {
+.reserve-btn {
   display: inline-block;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 8px;
-  background: var(--gold);
-  color: var(--coffee-dark);
+  padding: 13px 32px;
+  background: var(--brown);
+  color: #fff;
   border-radius: 50px;
-  margin-right: 6px;
-  vertical-align: middle;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  font-family: inherit;
+}
+.reserve-btn:hover {
+  background: var(--brown-2);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(74, 44, 26, 0.3);
+}
+
+/* Menu Detail Card */
+.detail-card {
+  background: var(--glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 28px;
+  padding: 36px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 50px rgba(74, 44, 26, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: center;
+}
+.detail-img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  background: radial-gradient(circle at 35% 30%, #f5e6d0 0%, #e0c9a8 30%, #b8895a 70%, #8b5a2b 100%);
+  position: relative;
+  box-shadow: 
+    inset 0 -20px 40px rgba(74, 44, 26, 0.3),
+    0 20px 40px rgba(74, 44, 26, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-img::after {
+  content: '❤';
+  color: #6b3410;
+  font-size: 70px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+.detail-info .badge-sm {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(74, 44, 26, 0.1);
+  color: var(--brown);
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.detail-info h3 {
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--brown);
+  margin-bottom: 12px;
+}
+.detail-info p {
+  font-size: 12px;
+  color: var(--text-soft);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px dashed rgba(74, 44, 26, 0.2);
+  border-bottom: 1px dashed rgba(74, 44, 26, 0.2);
+  margin-bottom: 18px;
+}
+.total-row span { font-size: 12px; color: var(--text-soft); }
+.total-row strong { font-size: 22px; color: var(--brown); font-weight: 900; }
+
+.detail-actions {
+  display: flex;
+  gap: 10px;
+}
+.add-cart-btn {
+  flex: 1;
+  padding: 12px;
+  background: var(--brown);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.add-cart-btn:hover {
+  background: var(--brown-2);
+  transform: translateY(-2px);
+}
+.heart-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(74, 44, 26, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--brown-3);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.heart-btn:hover {
+  background: var(--brown);
+  color: #fff;
 }
 
 /* ===== Footer ===== */
 .footer {
-  background: var(--coffee-dark);
+  background: rgba(74, 44, 26, 0.92);
+  backdrop-filter: blur(20px);
   color: #d4c4b8;
-  padding: 30px 20px;
-  text-align: center;
-  font-size: 14px;
+  padding: 40px 0 30px;
+  margin-top: 20px;
 }
-.footer strong { color: var(--gold); }
-
-/* ===== Hidden categories ===== */
-.hidden { display: none !important; }
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.footer-brand .logo { color: #fff; margin-bottom: 8px; }
+.footer-brand p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #b8a89a;
+}
+.footer-col h4 {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.footer-col ul li {
+  margin-bottom: 8px;
+}
+.footer-col ul a {
+  font-size: 12px;
+  color: #b8a89a;
+  transition: color 0.3s;
+}
+.footer-col ul a:hover { color: var(--gold); }
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  color: #a89a8e;
+}
 
 /* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .header h1 { font-size: 30px; }
-  .logo { font-size: 24px; }
-  .logo-icon { font-size: 28px; }
-  .menu-list { grid-template-columns: 1fr; }
-  .category-title { font-size: 20px; }
-  .category-title .ico { width: 42px; height: 42px; font-size: 22px; }
-  .tab { padding: 8px 18px; font-size: 13px; }
-  .item-icon { width: 46px; height: 46px; min-width: 46px; font-size: 24px; }
-  .item-text h3 { font-size: 15px; }
-  .item-price { font-size: 15px; }
+@media (max-width: 1100px) {
+  .coffee-hero h1 { font-size: 48px; }
+  .big-cup { width: 260px; height: 260px; }
+  .big-cup::after { font-size: 48px; }
+}
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .big-cup { position: relative; top: 0; left: 0; margin: 30px auto; }
+  .coffee-hero { text-align: center; }
+  .coffee-hero .logo-sm { justify-content: center; }
+  .hero-icon-row { justify-content: center; }
+  .menu-grid { grid-template-columns: repeat(2, 1fr); }
+  .bottom-grid { grid-template-columns: 1fr; }
+  .detail-card { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .nav-menu { display: none; }
+  .coffee-hero h1 { font-size: 34px; }
+  .big-cup { width: 200px; height: 200px; }
+  .big-cup::after { font-size: 38px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .app-preview { grid-template-columns: 1fr; }
+  .phone-card { width: 100%; }
+  .section-title { font-size: 24px; }
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .glass { padding: 24px; }
+  .container { padding: 0 16px; }
 }
 </style>
 </head>
@@ -289,368 +827,167 @@ body {
 
 <!-- ===== Header ===== -->
 <header class="header">
-  <div class="logo">
-    <span class="logo-icon">☕</span>
-    <span>کافه رستا</span>
+  <div class="container header-inner">
+    <div class="logo">
+      <span class="logo-icon">☕</span>
+      <span class="logo-text">
+        Flavored
+        <small>Wake up to something special</small>
+      </span>
+    </div>
+    <nav class="nav-menu">
+      <a href="#menu">منو</a>
+      <a href="#reserve">رزرو</a>
+      <a href="#about">درباره ما</a>
+      <a href="#contact">تماس</a>
+    </nav>
   </div>
-  <h1>منوی کافه</h1>
-  <p>طعم اصیل قهوه، در فضایی گرم و دنج</p>
-  <div class="divider"></div>
 </header>
 
-<!-- ===== Tabs ===== -->
-<div class="tabs">
-  <button class="tab active" data-target="all">همه</button>
-  <button class="tab" data-target="hot">نوشیدنی گرم</button>
-  <button class="tab" data-target="cold">نوشیدنی سرد</button>
-  <button class="tab" data-target="dessert">دسر و شیرینی</button>
-  <button class="tab" data-target="breakfast">صبحانه</button>
-</div>
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="container hero-grid">
 
-<!-- ===== Menu ===== -->
-<main class="container menu-section">
+    <!-- Left: App Preview -->
+    <div class="glass">
+      <div class="app-preview">
+        <div class="phone-card">
+          <div class="phone-header">
+            <span class="back">‹</span>
+            <span>Coffee</span>
+          </div>
+          <div class="view-menu-btn">View Menu</div>
 
-  <!-- نوشیدنی گرم -->
-  <section class="menu-category" data-category="hot">
-    <h2 class="category-title"><span class="ico">☕</span> نوشیدنی گرم</h2>
-    <div class="menu-list">
+          <div class="icon-row">
+            <div class="icon-chip active">☕</div>
+            <div class="icon-chip">🥤</div>
+            <div class="icon-chip">🧋</div>
+            <div class="icon-chip">🍵</div>
+          </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">☕</div>
-          <div class="item-text">
-            <h3>اسپرسو</h3>
-            <p>قهوه غلیظ و اصیل ایتالیایی با کرمای طلایی</p>
+          <div class="phone-cups">
+            <div class="mini-cup">
+              <div class="cup-img"></div>
+              <h4>Americano</h4>
+              <p>100% Natural Arabica</p>
+              <div class="price-row">
+                <span>$2.50</span>
+                <span class="heart-icon">♡</span>
+              </div>
+            </div>
+            <div class="mini-cup">
+              <div class="cup-img heart"></div>
+              <h4>Cappuccino</h4>
+              <p>Coffee 50%, milk 50%</p>
+              <div class="price-row">
+                <span>$2.50</span>
+                <span class="heart-icon">♡</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="moccaccino-card">
+            <h4>Moccaccino</h4>
+            <p>Mix with Coffee 30%, milk 50%, water 20%</p>
+          </div>
+
+          <div class="bottom-nav">
+            <span class="active">🏠</span>
+            <span>🛒</span>
+            <span>👤</span>
+            <span>☰</span>
           </div>
         </div>
-        <div class="item-price">۶۵,۰۰۰ <small>تومان</small></div>
-      </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥛</div>
-          <div class="item-text">
-            <h3>کاپوچینو <span class="badge-hot">پرفروش</span></h3>
-            <p>ترکیبی از اسپرسو و شیر بخارپز با فوم مخملی</p>
+        <div class="app-info">
+          <h3>App is Available</h3>
+          <p>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
+            و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
+            و مجله در ستون و سطر آنچنان که لازم است.
+          </p>
+          <div class="store-buttons">
+            <div class="store-btn"></div>
+            <div class="store-btn">▶</div>
           </div>
         </div>
-        <div class="item-price">۸۵,۰۰۰ <small>تومان</small></div>
       </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍯</div>
-          <div class="item-text">
-            <h3>لاته کاراملی</h3>
-            <p>قهوه ملایم با سیروپ کارامل و شیر گرم</p>
-          </div>
-        </div>
-        <div class="item-price">۹۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍫</div>
-          <div class="item-text">
-            <h3>موکا</h3>
-            <p>ترکیب شکلات تلخ، اسپرسو و شیر بخارپز</p>
-          </div>
-        </div>
-        <div class="item-price">۱۰۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍵</div>
-          <div class="item-text">
-            <h3>چای ماسالا</h3>
-            <p>چای هندی با ادویه‌های معطر و شیر</p>
-          </div>
-        </div>
-        <div class="item-price">۷۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍫</div>
-          <div class="item-text">
-            <h3>هات چاکلت</h3>
-            <p>شکلات تلخ ذوب‌شده با شیر داغ و خامه</p>
-          </div>
-        </div>
-        <div class="item-price">۹۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- نوشیدنی سرد -->
-  <section class="menu-category" data-category="cold">
-    <h2 class="category-title"><span class="ico">🧊</span> نوشیدنی سرد</h2>
-    <div class="menu-list">
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🧊</div>
-          <div class="item-text">
-            <h3>آیس لاته <span class="badge-hot">پرفروش</span></h3>
-            <p>قهوه سرد با یخ و شیر تازه، عالی برای تابستان</p>
-          </div>
+    <!-- Right: Coffee Hero -->
+    <div class="coffee-hero">
+      <div class="logo-sm">
+        <span>☕</span>
+        <div>
+          Flavored
+          <small>Wake up to something special</small>
         </div>
-        <div class="item-price">۹۰,۰۰۰ <small>تومان</small></div>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🧋</div>
-          <div class="item-text">
-            <h3>فراپه</h3>
-            <p>نوشیدنی یخی قهوه با خامه فرم‌گرفته</p>
-          </div>
-        </div>
-        <div class="item-price">۱۱۰,۰۰۰ <small>تومان</small></div>
+      <h1>
+        Coffee
+        <span>The Best For You</span>
+      </h1>
+
+      <button class="cta-btn">View Menu</button>
+
+      <div class="hero-icon-row">
+        <div class="icon-chip active">☕</div>
+        <div class="icon-chip">🧋</div>
+        <div class="icon-chip">🥤</div>
+        <div class="icon-chip">🍵</div>
       </div>
 
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥤</div>
-          <div class="item-text">
-            <h3>آیس آمریکانو</h3>
-            <p>اسپرسو سرد با آب و یخ، تلخ و خنک</p>
-          </div>
-        </div>
-        <div class="item-price">۷۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍋</div>
-          <div class="item-text">
-            <h3>لیموناد</h3>
-            <p>لیموی تازه با نعنا و یخ، خنک و انرژی‌بخش</p>
-          </div>
-        </div>
-        <div class="item-price">۶۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥭</div>
-          <div class="item-text">
-            <h3>اسموتی انبه</h3>
-            <p>انبه تازه با ماست یونانی و عسل</p>
-          </div>
-        </div>
-        <div class="item-price">۹۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍓</div>
-          <div class="item-text">
-            <h3>میلک‌شیک توت‌فرنگی</h3>
-            <p>بستنی وانیلی با توت‌فرنگی تازه</p>
-          </div>
-        </div>
-        <div class="item-price">۱۰۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
+      <div class="big-cup"></div>
     </div>
-  </section>
 
-  <!-- دسر و شیرینی -->
-  <section class="menu-category" data-category="dessert">
-    <h2 class="category-title"><span class="ico">🍰</span> دسر و شیرینی</h2>
-    <div class="menu-list">
+  </div>
+</section>
+
+<!-- ===== Menu Section ===== -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <h2 class="section-title">محبوب‌ترین‌های ما</h2>
+
+    <div class="menu-grid">
 
       <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍰</div>
-          <div class="item-text">
-            <h3>چیزکیک <span class="badge-hot">محبوب</span></h3>
-            <p>چیزکیک خانگی نیویورکی با سس توت‌فرنگی</p>
-          </div>
+        <div class="cup-photo"></div>
+        <h3>Americano</h3>
+        <p class="desc">100% Natural Arabica or Robusta</p>
+        <div class="actions">
+          <div class="action-btn">🛒</div>
+          <div class="action-btn">♡</div>
         </div>
-        <div class="item-price">۱۲۰,۰۰۰ <small>تومان</small></div>
+        <div class="price-tag">$2.50</div>
       </div>
 
       <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥐</div>
-          <div class="item-text">
-            <h3>کروسان</h3>
-            <p>کروسان کره‌ای تازه پخته شده در فر سنگ</p>
-          </div>
+        <div class="cup-photo heart"></div>
+        <h3>Cappuccino</h3>
+        <p class="desc">Coffee 50%, milk 50%</p>
+        <div class="actions">
+          <div class="action-btn">🛒</div>
+          <div class="action-btn">♡</div>
         </div>
-        <div class="item-price">۷۵,۰۰۰ <small>تومان</small></div>
+        <div class="price-tag">$2.50</div>
       </div>
 
       <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍪</div>
-          <div class="item-text">
-            <h3>کوکی شکلاتی</h3>
-            <p>کوکی خانگی با تکه‌های شکلات بلژیکی</p>
-          </div>
+        <div class="cup-photo leaf"></div>
+        <h3>Moccaccino</h3>
+        <p class="desc">Mix with Coffee, milk & water</p>
+        <div class="actions">
+          <div class="action-btn">🛒</div>
+          <div class="action-btn">♡</div>
         </div>
-        <div class="item-price">۵۵,۰۰۰ <small>تومان</small></div>
+        <div class="price-tag">$2.50</div>
       </div>
 
       <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍩</div>
-          <div class="item-text">
-            <h3>دونات</h3>
-            <p>دونات تازه با روکش شکلات و اسپرینکل</p>
-          </div>
-        </div>
-        <div class="item-price">۶۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍮</div>
-          <div class="item-text">
-            <h3>کرم کارامل</h3>
-            <p>دسر فرانسوی با کارامل خانگی</p>
-          </div>
-        </div>
-        <div class="item-price">۸۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🧁</div>
-          <div class="item-text">
-            <h3>کاپ‌کیک</h3>
-            <p>کاپ‌کیک وانیلی با خامه کره‌ای</p>
-          </div>
-        </div>
-        <div class="item-price">۷۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- صبحانه -->
-  <section class="menu-category" data-category="breakfast">
-    <h2 class="category-title"><span class="ico">🥗</span> صبحانه</h2>
-    <div class="menu-list">
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥑</div>
-          <div class="item-text">
-            <h3>تست آووکادو <span class="badge-hot">ویژه</span></h3>
-            <p>نان تست سبوس‌دار با آووکادو و تخم‌مرغ</p>
-          </div>
-        </div>
-        <div class="item-price">۱۵۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🍳</div>
-          <div class="item-text">
-            <h3>املت مخصوص</h3>
-            <p>املت با قارچ، پنیر و سبزیجات تازه</p>
-          </div>
-        </div>
-        <div class="item-price">۱۲۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥞</div>
-          <div class="item-text">
-            <h3>پنکیک عسل</h3>
-            <p>پنکیک نرم با عسل طبیعی و کره</p>
-          </div>
-        </div>
-        <div class="item-price">۱۳۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥣</div>
-          <div class="item-text">
-            <h3>کاسه ماست و میوه</h3>
-            <p>ماست یونانی با گرانولا و میوه فصل</p>
-          </div>
-        </div>
-        <div class="item-price">۹۵,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🧀</div>
-          <div class="item-text">
-            <h3>پنیر و گردو</h3>
-            <p>پنیر محلی با گردوی تازه و نان سنگک</p>
-          </div>
-        </div>
-        <div class="item-price">۱۱۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
-      <div class="menu-item">
-        <div class="item-info">
-          <div class="item-icon">🥖</div>
-          <div class="item-text">
-            <h3>ساندویچ صبحانه</h3>
-            <p>نان باگت با پنیر خامه‌ای، خیار و گوجه</p>
-          </div>
-        </div>
-        <div class="item-price">۱۰۰,۰۰۰ <small>تومان</small></div>
-      </div>
-
-    </div>
-  </section>
-
-</main>
-
-<!-- ===== Footer ===== -->
-<footer class="footer">
-  <p>© ۱۴۰۴ <strong>کافه رستا</strong> | تمامی حقوق محفوظ است.</p>
-</footer>
-
-<script>
-// ===== Tab Filter =====
-const tabs = document.querySelectorAll('.tab');
-const categories = document.querySelectorAll('.menu-category');
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-
-    const target = tab.dataset.target;
-
-    categories.forEach(cat => {
-      if (target === 'all' || cat.dataset.category === target) {
-        cat.classList.remove('hidden');
-      } else {
-        cat.classList.add('hidden');
-      }
-    });
-  });
-});
-
-// ===== Scroll Reveal =====
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.08 });
-
-document.querySelectorAll('.menu-item').forEach((el, i) => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = `all 0.5s ease ${i * 0.05}s`;
-  observer.observe(el);
-});
-</script>
-</body>
-</html>
+        <div class="cup-photo swirl"></div>
+        <h3>Latte Grand</h3>
+        <p class="desc">Mix with Coffee 30%, milk 50%</p>
+        <div class="actions">
+          <div class="action-btn">🛒</div>
+          <div class="action-btn">
