@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>منوی کافه رستا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --coffee-dark: #2c1810;
+  --coffee: #6f4e37;
+  --coffee-light: #a67c52;
+  --cream: #f5ebe0;
+  --cream-2: #ede0d4;
+  --gold: #c9a227;
+  --text-soft: #7a6a5f;
+  --white: #fff;
+}
+
+body {
+  font-family: 'Vazirmatn', sans-serif;
+  background: var(--cream);
+  color: var(--coffee-dark);
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+.header {
+  text-align: center;
+  padding: 50px 20px 30px;
+  background: linear-gradient(180deg, var(--coffee-dark), #3d2418);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.2), transparent 70%);
+  border-radius: 50%;
+}
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.15), transparent 70%);
+  border-radius: 50%;
+}
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 1;
+}
+.logo-icon { font-size: 34px; }
+.header h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+.header p {
+  color: #d4c4b8;
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+}
+.divider {
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 20px auto 0;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== Tabs ===== */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 30px 20px;
+  flex-wrap: wrap;
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+}
+.tab {
+  padding: 10px 26px;
+  background: #fff;
+  border: 1.5px solid rgba(111, 78, 55, 0.15);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+.tab:hover {
+  border-color: var(--coffee);
+  color: var(--coffee);
+}
+.tab.active {
+  background: var(--coffee);
+  color: #fff;
+  border-color: var(--coffee);
+  box-shadow: 0 8px 20px rgba(111, 78, 55, 0.3);
+}
+
+/* ===== Menu Section ===== */
+.menu-section {
+  padding: 20px 0 80px;
+}
+.menu-category {
+  margin-bottom: 60px;
+  scroll-margin-top: 100px;
+}
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--coffee-dark);
+  margin-bottom: 30px;
+  padding-bottom: 14px;
+  border-bottom: 2px dashed rgba(111, 78, 55, 0.2);
+}
+.category-title .ico {
+  width: 50px;
+  height: 50px;
+  background: rgba(111, 78, 55, 0.1);
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+/* ===== Menu Items ===== */
+.menu-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.menu-item {
+  background: #fff;
+  padding: 20px 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(111, 78, 55, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.menu-item::before {
+  content: '';
+  position: absolute;
+  right: 0; top: 0;
+  width: 4px; height: 100%;
+  background: linear-gradient(180deg, var(--coffee), var(--gold));
+  transform: scaleY(0);
+  transition: transform 0.4s;
+}
+.menu-item:hover::before { transform: scaleY(1); }
+.menu-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(111, 78, 55, 0.13);
+  border-color: transparent;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+.item-icon {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  background: linear-gradient(135deg, var(--cream-2), var(--cream));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.item-text h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--coffee-dark);
+}
+.item-text p {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.item-price {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--coffee);
+  white-space: nowrap;
+  text-align: left;
+}
+.item-price small {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-soft);
+  display: block;
+}
+
+/* ===== Badge ===== */
+.badge-hot {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: var(--gold);
+  color: var(--coffee-dark);
+  border-radius: 50px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: var(--coffee-dark);
+  color: #d4c4b8;
+  padding: 30px 20px;
+  text-align: center;
+  font-size: 14px;
+}
+.footer strong { color: var(--gold); }
+
+/* ===== Hidden categories ===== */
+.hidden { display: none !important; }
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .header h1 { font-size: 30px; }
+  .logo { font-size: 24px; }
+  .logo-icon { font-size: 28px; }
+  .menu-list { grid-template-columns: 1fr; }
+  .category-title { font-size: 20px; }
+  .category-title .ico { width: 42px; height: 42px; font-size: 22px; }
+  .tab { padding: 8px 18px; font-size: 13px; }
+  .item-icon { width: 46px; height: 46px; min-width: 46px; font-size: 24px; }
+  .item-text h3 { font-size: 15px; }
+  .item-price { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="header">
+  <div class="logo">
+    <span class="logo-icon">☕</span>
+    <span>کافه رستا</span>
+  </div>
+  <h1>منوی کافه</h1>
+  <p>طعم اصیل قهوه، در فضایی گرم و دنج</p>
+  <div class="divider"></div>
+</header>
+
+<!-- ===== Tabs ===== -->
+<div class="tabs">
+  <button class="tab active" data-target="all">همه</button>
+  <button class="tab" data-target="hot">نوشیدنی گرم</button>
+  <button class="tab" data-target="cold">نوشیدنی سرد</button>
+  <button class="tab" data-target="dessert">دسر و شیرینی</button>
+  <button class="tab" data-target="breakfast">صبحانه</button>
+</div>
+
+<!-- ===== Menu ===== -->
+<main class="container menu-section">
+
+  <!-- نوشیدنی گرم -->
+  <section class="menu-category" data-category="hot">
+    <h2 class="category-title"><span class="ico">☕</span> نوشیدنی گرم</h2>
+    <div class="menu-list">
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">☕</div>
+          <div class="item-text">
+            <h3>اسپرسو</h3>
+            <p>قهوه غلیظ و اصیل ایتالیایی با کرمای طلایی</p>
+          </div>
+        </div>
+        <div class="item-price">۶۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥛</div>
+          <div class="item-text">
+            <h3>کاپوچینو <span class="badge-hot">پرفروش</span></h3>
+            <p>ترکیبی از اسپرسو و شیر بخارپز با فوم مخملی</p>
+          </div>
+        </div>
+        <div class="item-price">۸۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍯</div>
+          <div class="item-text">
+            <h3>لاته کاراملی</h3>
+            <p>قهوه ملایم با سیروپ کارامل و شیر گرم</p>
+          </div>
+        </div>
+        <div class="item-price">۹۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍫</div>
+          <div class="item-text">
+            <h3>موکا</h3>
+            <p>ترکیب شکلات تلخ، اسپرسو و شیر بخارپز</p>
+          </div>
+        </div>
+        <div class="item-price">۱۰۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍵</div>
+          <div class="item-text">
+            <h3>چای ماسالا</h3>
+            <p>چای هندی با ادویه‌های معطر و شیر</p>
+          </div>
+        </div>
+        <div class="item-price">۷۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍫</div>
+          <div class="item-text">
+            <h3>هات چاکلت</h3>
+            <p>شکلات تلخ ذوب‌شده با شیر داغ و خامه</p>
+          </div>
+        </div>
+        <div class="item-price">۹۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- نوشیدنی سرد -->
+  <section class="menu-category" data-category="cold">
+    <h2 class="category-title"><span class="ico">🧊</span> نوشیدنی سرد</h2>
+    <div class="menu-list">
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🧊</div>
+          <div class="item-text">
+            <h3>آیس لاته <span class="badge-hot">پرفروش</span></h3>
+            <p>قهوه سرد با یخ و شیر تازه، عالی برای تابستان</p>
+          </div>
+        </div>
+        <div class="item-price">۹۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🧋</div>
+          <div class="item-text">
+            <h3>فراپه</h3>
+            <p>نوشیدنی یخی قهوه با خامه فرم‌گرفته</p>
+          </div>
+        </div>
+        <div class="item-price">۱۱۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥤</div>
+          <div class="item-text">
+            <h3>آیس آمریکانو</h3>
+            <p>اسپرسو سرد با آب و یخ، تلخ و خنک</p>
+          </div>
+        </div>
+        <div class="item-price">۷۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍋</div>
+          <div class="item-text">
+            <h3>لیموناد</h3>
+            <p>لیموی تازه با نعنا و یخ، خنک و انرژی‌بخش</p>
+          </div>
+        </div>
+        <div class="item-price">۶۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥭</div>
+          <div class="item-text">
+            <h3>اسموتی انبه</h3>
+            <p>انبه تازه با ماست یونانی و عسل</p>
+          </div>
+        </div>
+        <div class="item-price">۹۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍓</div>
+          <div class="item-text">
+            <h3>میلک‌شیک توت‌فرنگی</h3>
+            <p>بستنی وانیلی با توت‌فرنگی تازه</p>
+          </div>
+        </div>
+        <div class="item-price">۱۰۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- دسر و شیرینی -->
+  <section class="menu-category" data-category="dessert">
+    <h2 class="category-title"><span class="ico">🍰</span> دسر و شیرینی</h2>
+    <div class="menu-list">
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍰</div>
+          <div class="item-text">
+            <h3>چیزکیک <span class="badge-hot">محبوب</span></h3>
+            <p>چیزکیک خانگی نیویورکی با سس توت‌فرنگی</p>
+          </div>
+        </div>
+        <div class="item-price">۱۲۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥐</div>
+          <div class="item-text">
+            <h3>کروسان</h3>
+            <p>کروسان کره‌ای تازه پخته شده در فر سنگ</p>
+          </div>
+        </div>
+        <div class="item-price">۷۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍪</div>
+          <div class="item-text">
+            <h3>کوکی شکلاتی</h3>
+            <p>کوکی خانگی با تکه‌های شکلات بلژیکی</p>
+          </div>
+        </div>
+        <div class="item-price">۵۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍩</div>
+          <div class="item-text">
+            <h3>دونات</h3>
+            <p>دونات تازه با روکش شکلات و اسپرینکل</p>
+          </div>
+        </div>
+        <div class="item-price">۶۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍮</div>
+          <div class="item-text">
+            <h3>کرم کارامل</h3>
+            <p>دسر فرانسوی با کارامل خانگی</p>
+          </div>
+        </div>
+        <div class="item-price">۸۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🧁</div>
+          <div class="item-text">
+            <h3>کاپ‌کیک</h3>
+            <p>کاپ‌کیک وانیلی با خامه کره‌ای</p>
+          </div>
+        </div>
+        <div class="item-price">۷۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- صبحانه -->
+  <section class="menu-category" data-category="breakfast">
+    <h2 class="category-title"><span class="ico">🥗</span> صبحانه</h2>
+    <div class="menu-list">
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥑</div>
+          <div class="item-text">
+            <h3>تست آووکادو <span class="badge-hot">ویژه</span></h3>
+            <p>نان تست سبوس‌دار با آووکادو و تخم‌مرغ</p>
+          </div>
+        </div>
+        <div class="item-price">۱۵۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🍳</div>
+          <div class="item-text">
+            <h3>املت مخصوص</h3>
+            <p>املت با قارچ، پنیر و سبزیجات تازه</p>
+          </div>
+        </div>
+        <div class="item-price">۱۲۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥞</div>
+          <div class="item-text">
+            <h3>پنکیک عسل</h3>
+            <p>پنکیک نرم با عسل طبیعی و کره</p>
+          </div>
+        </div>
+        <div class="item-price">۱۳۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥣</div>
+          <div class="item-text">
+            <h3>کاسه ماست و میوه</h3>
+            <p>ماست یونانی با گرانولا و میوه فصل</p>
+          </div>
+        </div>
+        <div class="item-price">۹۵,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🧀</div>
+          <div class="item-text">
+            <h3>پنیر و گردو</h3>
+            <p>پنیر محلی با گردوی تازه و نان سنگک</p>
+          </div>
+        </div>
+        <div class="item-price">۱۱۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-info">
+          <div class="item-icon">🥖</div>
+          <div class="item-text">
+            <h3>ساندویچ صبحانه</h3>
+            <p>نان باگت با پنیر خامه‌ای، خیار و گوجه</p>
+          </div>
+        </div>
+        <div class="item-price">۱۰۰,۰۰۰ <small>تومان</small></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <p>© ۱۴۰۴ <strong>کافه رستا</strong> | تمامی حقوق محفوظ است.</p>
+</footer>
+
+<script>
+// ===== Tab Filter =====
+const tabs = document.querySelectorAll('.tab');
+const categories = document.querySelectorAll('.menu-category');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    const target = tab.dataset.target;
+
+    categories.forEach(cat => {
+      if (target === 'all' || cat.dataset.category === target) {
+        cat.classList.remove('hidden');
+      } else {
+        cat.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// ===== Scroll Reveal =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.menu-item').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `all 0.5s ease ${i * 0.05}s`;
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
