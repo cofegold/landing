@@ -3,76 +3,57 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Flavored | کافه گلد </title>
+<title>اورورا کافه | قهوه شخصی‌سازی‌شده شما</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --brown: #4a2c1a;
-  --brown-2: #6b4423;
-  --brown-3: #8b5a2b;
-  --cream: #e8dcc8;
-  --cream-2: #f0e6d2;
-  --beige: #d9c9b0;
-  --gold: #c9a961;
+  --bg-1: #dce4f2;
+  --bg-2: #e8eef8;
+  --bg-3: #cdd8ec;
+  --white: #ffffff;
+  --coffee: #6b3f1d;
+  --coffee-2: #8b5a2b;
+  --coffee-3: #4a2c15;
+  --coffee-light: #d4b896;
   --text: #2c1810;
   --text-soft: #7a6a5f;
-  --white: #fff;
-  --glass: rgba(255, 255, 255, 0.55);
-  --glass-dark: rgba(74, 44, 26, 0.85);
+  --text-muted: #a89a8e;
+  --blue-soft: #b8c6e0;
+  --blue-icon: #5b7fc7;
+  --footer-bg: #4a2810;
+  --footer-bg-2: #5c3518;
+  --border-soft: rgba(107, 63, 29, 0.08);
+  --shadow-sm: 0 4px 16px rgba(60, 80, 130, 0.08);
+  --shadow-md: 0 12px 30px rgba(60, 80, 130, 0.12);
+  --shadow-lg: 0 20px 50px rgba(60, 80, 130, 0.15);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Vazirmatn', sans-serif;
-  background: linear-gradient(135deg, #e8dcc8 0%, #d9c9b0 50%, #c9b89a 100%);
-  background-attachment: fixed;
+  background: linear-gradient(180deg, #d6def0 0%, #e8eef8 40%, #dce4f2 100%);
   color: var(--text);
-  line-height: 1.7;
+  line-height: 1.8;
   overflow-x: hidden;
   min-height: 100vh;
-  position: relative;
-}
-
-/* ===== Background coffee beans ===== */
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-  pointer-events: none;
-}
-body::before {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(201, 169, 97, 0.3), transparent 70%);
-  top: -100px; left: -100px;
-}
-body::after {
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(139, 90, 43, 0.25), transparent 70%);
-  bottom: -150px; right: -150px;
 }
 
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; border: none; }
 
 .container {
-  max-width: 1300px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-  position: relative;
-  z-index: 1;
 }
 
 /* ===== Header ===== */
 .header {
-  padding: 26px 0;
-  position: relative;
-  z-index: 10;
+  padding: 22px 0;
 }
 .header-inner {
   display: flex;
@@ -83,743 +64,688 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 26px;
-  font-weight: 900;
-  color: var(--brown);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
 }
-.logo-icon {
-  font-size: 30px;
-  filter: drop-shadow(0 4px 8px rgba(74, 44, 26, 0.3));
-}
-.logo-text small {
-  display: block;
-  font-size: 10px;
-  font-weight: 400;
-  color: var(--brown-3);
-  letter-spacing: 0.5px;
-  margin-top: -4px;
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b8c9e8, #8fa7d6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(91, 127, 199, 0.3);
 }
 .nav-menu {
   display: flex;
-  gap: 36px;
-  font-size: 15px;
+  gap: 30px;
+  font-size: 13px;
   font-weight: 500;
-  color: var(--brown);
+  color: var(--text-soft);
 }
-.nav-menu a {
-  position: relative;
-  transition: color 0.3s;
+.nav-menu a { transition: color 0.3s; }
+.nav-menu a:hover,
+.nav-menu a.active { color: var(--text); font-weight: 700; }
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
-.nav-menu a:hover { color: var(--brown-3); }
-.nav-menu a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; right: 0;
-  width: 0; height: 2px;
-  background: var(--brown-2);
-  transition: width 0.3s;
-  border-radius: 2px;
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-soft);
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
 }
-.nav-menu a:hover::after { width: 100%; }
+.icon-btn:hover {
+  background: #fff;
+  color: var(--coffee);
+  transform: translateY(-2px);
+}
 
 /* ===== Hero ===== */
 .hero {
   padding: 40px 0 60px;
+  position: relative;
 }
-.hero-grid {
+.hero-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  align-items: start;
+  gap: 40px;
+  align-items: center;
 }
 
-/* ===== Glass Card ===== */
-.glass {
-  background: var(--glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 20px 50px rgba(74, 44, 26, 0.08);
-  padding: 32px;
+.hero-text .badge-line {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.hero-text h1 {
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+.hero-text p {
+  font-size: 14px;
+  color: var(--text-soft);
+  margin-bottom: 28px;
+  max-width: 400px;
+  line-height: 1.9;
+}
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--coffee-3);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(74, 44, 21, 0.25);
+}
+.btn-primary:hover {
+  background: var(--coffee);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(74, 44, 21, 0.35);
+}
+.btn-outline {
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--text);
+  border: 1.5px solid rgba(44, 24, 16, 0.15);
+  backdrop-filter: blur(10px);
+}
+.btn-outline:hover {
+  background: #fff;
+  border-color: var(--coffee-3);
+  transform: translateY(-3px);
+}
+
+/* ===== Hero Image / Big Cup ===== */
+.hero-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+}
+.big-cup {
+  width: 240px;
+  height: 260px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 30px 40px rgba(74, 44, 21, 0.25));
+  animation: float 5s ease-in-out infinite;
+}
+.big-cup-glass {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px 16px 60px 60px / 16px 16px 40px 40px;
+  background: linear-gradient(180deg, #f5e6d3 0%, #e8d0b0 30%, #c9a878 70%, #a67c52 100%);
   position: relative;
   overflow: hidden;
+  box-shadow: inset -20px 0 30px rgba(74, 44, 21, 0.15), inset 20px 0 30px rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(255, 255, 255, 0.5);
 }
-
-/* ===== Hero Left: App Preview ===== */
-.app-preview {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 28px;
-  align-items: start;
-}
-.phone-card {
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 24px;
-  padding: 18px;
-  width: 250px;
-  box-shadow: 0 15px 40px rgba(74, 44, 26, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-}
-.phone-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--brown);
-  margin-bottom: 14px;
-}
-.phone-header .back { font-size: 16px; color: var(--brown-3); }
-.view-menu-btn {
-  display: inline-block;
-  padding: 7px 18px;
-  background: var(--brown);
-  color: #fff;
-  border-radius: 50px;
-  font-size: 11px;
-  font-weight: 600;
-  margin-bottom: 16px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.view-menu-btn:hover { background: var(--brown-2); transform: scale(1.03); }
-
-.icon-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 18px;
-  justify-content: center;
-}
-.icon-chip {
-  width: 36px; height: 36px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s;
-  border: 1px solid rgba(74, 44, 26, 0.08);
-}
-.icon-chip:hover,
-.icon-chip.active {
-  background: var(--brown);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 16px rgba(74, 44, 26, 0.25);
-}
-.icon-chip.active { color: #fff; }
-
-.phone-cups {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.mini-cup {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 14px;
-  padding: 12px 8px;
-  text-align: center;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.mini-cup:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(74, 44, 26, 0.12);
-}
-.cup-img {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #d9b78a 0%, #b8895a 40%, #8b5a2b 100%);
-  position: relative;
-  margin-bottom: 8px;
-  box-shadow: inset 0 -8px 16px rgba(74, 44, 26, 0.3);
-}
-.cup-img::after {
+.big-cup-glass::before {
   content: '';
   position: absolute;
-  top: 20%; left: 25%;
-  width: 50%; height: 35%;
+  top: 0; left: 15%;
+  width: 30%; height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5), transparent);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent 70%);
 }
-.cup-img.heart::before {
-  content: '❤';
+.big-cup-glass::after {
+  content: '';
   position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  color: #8b4513;
-  font-size: 22px;
-  z-index: 2;
+  top: 12%; left: 20%;
+  width: 60%; height: 18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(160, 100, 60, 0.5), transparent 70%);
 }
-.mini-cup h4 {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--brown);
-  margin-bottom: 2px;
+.cup-handle {
+  position: absolute;
+  top: 25%;
+  left: -30px;
+  width: 50px;
+  height: 90px;
+  border: 8px solid #e8d0b0;
+  border-right: none;
+  border-radius: 50px 0 0 50px;
+  box-shadow: -5px 0 15px rgba(74, 44, 21, 0.15);
 }
-.mini-cup p {
-  font-size: 9px;
-  color: var(--text-soft);
-  line-height: 1.3;
-}
-.mini-cup .price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 6px;
-  font-size: 9px;
-}
-.mini-cup .price-row span { color: var(--brown-2); font-weight: 700; }
-.mini-cup .heart-icon {
-  color: var(--brown-3);
-  cursor: pointer;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
 }
 
-.moccaccino-card {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 14px;
-  padding: 14px;
-  font-size: 11px;
-}
-.moccaccino-card h4 {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--brown);
-  margin-bottom: 4px;
-}
-.moccaccino-card p {
-  color: var(--text-soft);
-  line-height: 1.5;
-}
-
-.bottom-nav {
+/* Coffee beans decoration */
+.beans-deco {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  z-index: 3;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: var(--brown);
-  border-radius: 50px;
-  padding: 10px 16px;
-  margin-top: 14px;
+  gap: 4px;
 }
-.bottom-nav span {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 16px;
-  cursor: pointer;
-  transition: color 0.3s;
+.bean {
+  width: 34px;
+  height: 26px;
+  background: radial-gradient(circle at 35% 30%, #a67c52, #6b3f1d);
+  border-radius: 50% 50% 45% 45%;
+  position: relative;
+  box-shadow: 0 6px 12px rgba(74, 44, 21, 0.3);
+  transform: rotate(-20deg);
 }
-.bottom-nav span.active { color: #fff; }
-.bottom-nav span:hover { color: #fff; }
+.bean::after {
+  content: '';
+  position: absolute;
+  top: 45%; left: 10%;
+  width: 80%; height: 2px;
+  background: rgba(40, 20, 10, 0.5);
+  border-radius: 2px;
+}
+.bean:nth-child(2) { transform: rotate(15deg) translateY(-8px); }
+.bean:nth-child(3) { transform: rotate(-35deg) translateY(4px); }
 
-/* ===== Right of phone: text ===== */
-.app-info h3 {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--brown);
-  margin-bottom: 14px;
-}
-.app-info p {
-  font-size: 13px;
-  color: var(--text-soft);
-  line-height: 1.9;
-  margin-bottom: 20px;
-}
-.store-buttons {
-  display: flex;
-  gap: 10px;
-}
-.store-btn {
-  width: 42px; height: 42px;
-  background: var(--brown);
+/* Floating icons around cup */
+.float-icon {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
   font-size: 20px;
-  cursor: pointer;
-  transition: all 0.3s;
+  color: var(--coffee-2);
+  box-shadow: 0 8px 20px rgba(60, 80, 130, 0.15);
+  backdrop-filter: blur(10px);
+  animation: floatIcon 6s ease-in-out infinite;
 }
-.store-btn:hover {
-  background: var(--brown-2);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(74, 44, 26, 0.3);
-}
-
-/* ===== Big Coffee Hero (Right) ===== */
-.coffee-hero {
-  text-align: right;
-  position: relative;
-}
-.coffee-hero .logo-sm {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--brown);
-  margin-bottom: 30px;
-}
-.coffee-hero .logo-sm small {
-  display: block;
-  font-size: 9px;
-  font-weight: 400;
-  color: var(--brown-3);
-}
-.coffee-hero h1 {
-  font-size: 62px;
-  font-weight: 900;
-  line-height: 1.05;
-  color: var(--brown);
-  margin-bottom: 28px;
-  letter-spacing: -1px;
-}
-.coffee-hero h1 span {
-  display: block;
-  color: var(--brown-3);
-}
-.cta-btn {
-  display: inline-block;
-  padding: 14px 36px;
-  background: var(--brown);
-  color: #fff;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-bottom: 24px;
-  border: none;
-  font-family: inherit;
-}
-.cta-btn:hover {
-  background: var(--brown-2);
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(74, 44, 26, 0.3);
+.float-icon.i1 { top: 5%; right: 10%; animation-delay: 0s; }
+.float-icon.i2 { top: 25%; right: -5%; animation-delay: 0.5s; }
+.float-icon.i3 { top: 55%; right: 0%; animation-delay: 1s; }
+.float-icon.i4 { top: 15%; left: 0%; animation-delay: 1.5s; background: var(--coffee-3); color: #fff; }
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-.hero-icon-row {
-  display: flex;
-  gap: 10px;
-}
-.hero-icon-row .icon-chip {
-  width: 44px; height: 44px;
-  font-size: 18px;
-}
-
-.big-cup {
-  position: absolute;
-  top: -20px;
-  left: -40px;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #f5e6d0 0%, #e0c9a8 30%, #b8895a 70%, #8b5a2b 100%);
-  box-shadow: 
-    inset 0 -20px 40px rgba(74, 44, 26, 0.3),
-    0 40px 80px rgba(74, 44, 26, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: floatCup 5s ease-in-out infinite;
-}
-.big-cup::before {
-  content: '';
-  position: absolute;
-  top: 25%; left: 30%;
-  width: 40%; height: 30%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
-}
-.big-cup::after {
-  content: '❤';
-  position: absolute;
-  top: 45%; left: 50%;
-  transform: translate(-50%, -50%);
-  color: #6b3410;
-  font-size: 60px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-}
-@keyframes floatCup {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
-}
-
-/* ===== Menu Section ===== */
-.menu-section {
-  padding: 40px 0 60px;
+/* ===== Section ===== */
+.section {
+  padding: 50px 0 60px;
 }
 .section-title {
-  font-size: 32px;
-  font-weight: 900;
-  color: var(--brown);
-  margin-bottom: 30px;
-  text-align: right;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 22px;
+  background: var(--coffee-2);
+  border-radius: 4px;
 }
 
-.menu-item {
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 24px;
+/* ===== Feature Cards ===== */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+.feature-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
   padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 15px 40px rgba(74, 44, 26, 0.08);
-  transition: all 0.4s ease;
   text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
 }
-.menu-item:hover {
+.feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 25px 50px rgba(74, 44, 26, 0.15);
-  background: rgba(255, 255, 255, 0.75);
-}
-.menu-item .cup-photo {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  margin: 0 auto 16px;
-  background: radial-gradient(circle at 35% 30%, #f5e6d0 0%, #e0c9a8 30%, #b8895a 70%, #8b5a2b 100%);
-  position: relative;
-  box-shadow: 
-    inset 0 -15px 30px rgba(74, 44, 26, 0.3),
-    0 15px 30px rgba(74, 44, 26, 0.2);
-}
-.menu-item .cup-photo::before {
-  content: '';
-  position: absolute;
-  top: 22%; left: 28%;
-  width: 45%; height: 32%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.5), transparent 70%);
-}
-.menu-item .cup-photo.heart::after {
-  content: '❤';
-  position: absolute;
-  top: 48%; left: 50%;
-  transform: translate(-50%, -50%);
-  color: #6b3410;
-  font-size: 32px;
-}
-.menu-item .cup-photo.leaf::after {
-  content: '🍃';
-  position: absolute;
-  top: 48%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 32px;
-}
-.menu-item .cup-photo.swirl::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 55%; height: 55%;
-  border-radius: 50%;
-  border: 3px solid rgba(107, 52, 16, 0.5);
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-}
-.menu-item h3 {
-  font-size: 18px;
-  font-weight: 800;
-  color: var(--brown);
-  margin-bottom: 4px;
-}
-.menu-item .desc {
-  font-size: 11px;
-  color: var(--text-soft);
-  margin-bottom: 16px;
-  line-height: 1.5;
-}
-.menu-item .actions {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-.action-btn {
-  width: 32px; height: 32px;
+  box-shadow: var(--shadow-lg);
   background: rgba(255, 255, 255, 0.9);
+}
+.card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
+  background: var(--coffee-3);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  color: var(--brown-3);
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(74, 44, 21, 0.3);
+}
+.card-img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 12px 28px rgba(74, 44, 21, 0.2);
+  overflow: hidden;
+  background: radial-gradient(circle at 35% 30%, #f5e6d3, #a67c52 60%, #6b3f1d);
+}
+/* Coffee patterns */
+.card-img.p1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(160, 100, 60, 0.6), transparent 60%);
+}
+.card-img.p1::after {
+  content: '';
+  position: absolute;
+  top: 15%; left: 20%;
+  width: 60%; height: 30%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f5e6d3, transparent);
+}
+.card-img.p2 {
+  background: radial-gradient(circle at 35% 30%, #6b3f1d, #3a1f0a 60%, #1a0a00);
+}
+.card-img.p2::before {
+  content: '';
+  position: absolute;
+  top: 15%; left: 20%;
+  width: 60%; height: 20%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f5e6d3, transparent 80%);
+  opacity: 0.9;
+}
+.card-img.p2::after {
+  content: '';
+  position: absolute;
+  top: 20%; left: 30%;
+  width: 40%; height: 15%;
+  border-radius: 50%;
+  background: #3a1f0a;
+  filter: blur(4px);
+}
+.card-img.p3 {
+  background: radial-gradient(circle at 35% 30%, #f0dcc0, #8b5a2b 55%, #4a2c15);
+}
+.card-img.p3::before {
+  content: '';
+  position: absolute;
+  bottom: 15%; left: 20%;
+  width: 60%; height: 30%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #3a1f0a, transparent 70%);
+}
+.card-img.p3::after {
+  content: '';
+  position: absolute;
+  top: 15%; left: 20%;
+  width: 60%; height: 25%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #f5e6d3, transparent);
+}
+
+.feature-card h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.feature-card p {
+  font-size: 11px;
+  color: var(--text-soft);
+  line-height: 1.7;
+}
+
+/* ===== Smart Ordering ===== */
+.smart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr;
+  gap: 22px;
+}
+
+.mini-order {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s;
+  position: relative;
+}
+.mini-order:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+.mini-order .card-badge { top: 14px; left: 14px; }
+.mini-order .card-img {
+  width: 100px;
+  height: 100px;
+  margin: 8px auto 14px;
+}
+.mini-order h3 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.mini-order p {
+  font-size: 10px;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+/* Order Form Panel */
+.order-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  padding: 26px 24px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.option-icons {
+  display: flex;
+  gap: 8px;
+}
+.option-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(220, 228, 242, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
   cursor: pointer;
   transition: all 0.3s;
-  border: 1px solid rgba(74, 44, 26, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
-.action-btn:hover {
-  background: var(--brown);
-  color: #fff;
-  transform: scale(1.1);
+.option-icon:hover { transform: translateY(-3px); }
+.option-icon.active { background: var(--coffee-3); }
+.option-icon.red { background: #e74c3c; }
+
+.quantity-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border-radius: 50px;
+  padding: 6px 8px;
+  box-shadow: inset 0 2px 6px rgba(60, 80, 130, 0.05);
 }
-.price-tag {
-  display: inline-block;
-  padding: 6px 20px;
-  background: var(--brown);
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(220, 228, 242, 0.5);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+.qty-btn:hover {
+  background: var(--coffee-3);
   color: #fff;
+}
+.qty-value {
+  flex: 1;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.one-click-btn {
+  background: var(--coffee-3);
+  color: #fff;
+  padding: 14px;
   border-radius: 50px;
   font-size: 13px;
   font-weight: 700;
-}
-
-/* ===== Bottom Section ===== */
-.bottom-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 30px;
-  padding: 40px 0 80px;
-}
-
-/* Reserve Card */
-.reserve-card {
-  background: var(--glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-radius: 28px;
-  padding: 36px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 20px 50px rgba(74, 44, 26, 0.1);
-}
-.reserve-card .badge {
-  display: inline-block;
-  padding: 5px 14px;
-  background: rgba(74, 44, 26, 0.1);
-  color: var(--brown);
-  border-radius: 50px;
-  font-size: 11px;
-  font-weight: 600;
-  margin-bottom: 16px;
-  letter-spacing: 1px;
-}
-.reserve-card h2 {
-  font-size: 28px;
-  font-weight: 900;
-  color: var(--brown);
-  margin-bottom: 16px;
-  line-height: 1.3;
-}
-.reserve-card p {
-  font-size: 13px;
-  color: var(--text-soft);
-  line-height: 1.9;
-  margin-bottom: 24px;
-}
-.reserve-btn {
-  display: inline-block;
-  padding: 13px 32px;
-  background: var(--brown);
-  color: #fff;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
   transition: all 0.3s;
-  border: none;
-  font-family: inherit;
+  box-shadow: 0 10px 24px rgba(74, 44, 21, 0.3);
 }
-.reserve-btn:hover {
-  background: var(--brown-2);
+.one-click-btn:hover {
+  background: var(--coffee);
   transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(74, 44, 26, 0.3);
-}
-
-/* Menu Detail Card */
-.detail-card {
-  background: var(--glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-radius: 28px;
-  padding: 36px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 20px 50px rgba(74, 44, 26, 0.1);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  align-items: center;
-}
-.detail-img {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 24px;
-  background: radial-gradient(circle at 35% 30%, #f5e6d0 0%, #e0c9a8 30%, #b8895a 70%, #8b5a2b 100%);
-  position: relative;
-  box-shadow: 
-    inset 0 -20px 40px rgba(74, 44, 26, 0.3),
-    0 20px 40px rgba(74, 44, 26, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.detail-img::after {
-  content: '❤';
-  color: #6b3410;
-  font-size: 70px;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
-}
-.detail-info .badge-sm {
-  display: inline-block;
-  padding: 4px 12px;
-  background: rgba(74, 44, 26, 0.1);
-  color: var(--brown);
-  border-radius: 50px;
-  font-size: 10px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.detail-info h3 {
-  font-size: 26px;
-  font-weight: 900;
-  color: var(--brown);
-  margin-bottom: 12px;
-}
-.detail-info p {
-  font-size: 12px;
-  color: var(--text-soft);
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-.total-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 0;
-  border-top: 1px dashed rgba(74, 44, 26, 0.2);
-  border-bottom: 1px dashed rgba(74, 44, 26, 0.2);
-  margin-bottom: 18px;
-}
-.total-row span { font-size: 12px; color: var(--text-soft); }
-.total-row strong { font-size: 22px; color: var(--brown); font-weight: 900; }
-
-.detail-actions {
-  display: flex;
-  gap: 10px;
-}
-.add-cart-btn {
-  flex: 1;
-  padding: 12px;
-  background: var(--brown);
-  color: #fff;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  border: none;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-.add-cart-btn:hover {
-  background: var(--brown-2);
-  transform: translateY(-2px);
-}
-.heart-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(74, 44, 26, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: var(--brown-3);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.heart-btn:hover {
-  background: var(--brown);
-  color: #fff;
+  box-shadow: 0 14px 30px rgba(74, 44, 21, 0.4);
 }
 
 /* ===== Footer ===== */
 .footer {
-  background: rgba(74, 44, 26, 0.92);
-  backdrop-filter: blur(20px);
+  background: var(--footer-bg);
   color: #d4c4b8;
-  padding: 40px 0 30px;
-  margin-top: 20px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 0 30px;
+  border-radius: 40px 40px 0 0;
 }
+/* Circuit pattern */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 60%;
+  height: 100%;
+  background-image:
+    linear-gradient(90deg, rgba(212, 184, 150, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(212, 184, 150, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 80% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 80% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+}
+.footer::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 50%;
+  height: 100%;
+  background-image: radial-gradient(circle at 20% 30%, rgba(212, 184, 150, 0.15) 3px, transparent 4px),
+                    radial-gradient(circle at 60% 60%, rgba(212, 184, 150, 0.12) 4px, transparent 5px),
+                    radial-gradient(circle at 80% 20%, rgba(212, 184, 150, 0.1) 3px, transparent 4px);
+  pointer-events: none;
+}
+
 .footer-inner {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 30px;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 50px;
 }
-.footer-brand .logo { color: #fff; margin-bottom: 8px; }
-.footer-brand p {
-  font-size: 12px;
-  line-height: 1.7;
-  color: #b8a89a;
-}
-.footer-col h4 {
-  color: var(--gold);
-  font-size: 14px;
-  font-weight: 700;
+
+.footer-brand .logo-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b6fff, #5b7fc7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
   margin-bottom: 14px;
+  box-shadow: 0 10px 25px rgba(91, 127, 199, 0.4);
+}
+.footer-brand h3 {
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+.footer-brand p {
+  font-size: 11px;
+  color: #a89a8e;
+  line-height: 1.7;
+}
+
+.footer-col h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
 }
 .footer-col ul li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .footer-col ul a {
   font-size: 12px;
   color: #b8a89a;
-  transition: color 0.3s;
+  transition: all 0.3s;
+  display: inline-block;
 }
-.footer-col ul a:hover { color: var(--gold); }
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.footer-col ul a:hover {
+  color: #f5e6d3;
+  transform: translateX(-4px);
+}
+
+.footer-cta {
+  display: flex;
+  align-items: center;
+}
+.footer-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+.footer-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+.footer-cta-btn .arrow {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--footer-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
+  font-weight: 700;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 11px;
   color: #a89a8e;
 }
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+.footer-socials a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #b8a89a;
+  font-size: 11px;
+  transition: color 0.3s;
+}
+.footer-socials a:hover { color: #f5e6d3; }
 
 /* ===== Responsive ===== */
-@media (max-width: 1100px) {
-  .coffee-hero h1 { font-size: 48px; }
-  .big-cup { width: 260px; height: 260px; }
-  .big-cup::after { font-size: 48px; }
-}
-
-@media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .big-cup { position: relative; top: 0; left: 0; margin: 30px auto; }
-  .coffee-hero { text-align: center; }
-  .coffee-hero .logo-sm { justify-content: center; }
-  .hero-icon-row { justify-content: center; }
-  .menu-grid { grid-template-columns: repeat(2, 1fr); }
-  .bottom-grid { grid-template-columns: 1fr; }
-  .detail-card { grid-template-columns: 1fr; }
+@media (max-width: 992px) {
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .hero-text p { margin-left: auto; margin-right: auto; }
+  .hero-buttons { justify-content: center; }
+  .hero-image { order: -1; min-height: 280px; }
+  .big-cup { width: 200px; height: 220px; }
+  .feature-grid { grid-template-columns: 1fr 1fr; }
+  .smart-grid { grid-template-columns: 1fr 1fr; }
+  .order-panel { grid-column: 1 / -1; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 640px) {
   .nav-menu { display: none; }
-  .coffee-hero h1 { font-size: 34px; }
-  .big-cup { width: 200px; height: 200px; }
-  .big-cup::after { font-size: 38px; }
-  .menu-grid { grid-template-columns: 1fr; }
-  .app-preview { grid-template-columns: 1fr; }
-  .phone-card { width: 100%; }
-  .section-title { font-size: 24px; }
+  .hero-text h1 { font-size: 36px; }
+  .section-title { font-size: 20px; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .smart-grid { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; text-align: center; }
-  .glass { padding: 24px; }
+  .footer-brand .logo-circle { margin: 0 auto 14px; }
+  .footer-bottom { justify-content: center; text-align: center; }
   .container { padding: 0 16px; }
+  .big-cup { width: 170px; height: 190px; }
+}
+
+@media (max-width: 400px) {
+  .hero-text h1 { font-size: 30px; }
+  .btn { padding: 11px 22px; font-size: 12px; }
 }
 </style>
 </head>
@@ -829,286 +755,211 @@ ul { list-style: none; }
 <header class="header">
   <div class="container header-inner">
     <div class="logo">
-      <span class="logo-icon">☕</span>
-      <span class="logo-text">
-        Flavored
-        <small>Wake up to something special</small>
-      </span>
+      <div class="logo-mark">◎</div>
+      <span>اورورا کافه هوشمند</span>
     </div>
+
     <nav class="nav-menu">
-      <a href="#menu">منو</a>
-      <a href="#reserve">رزرو</a>
-      <a href="#about">درباره ما</a>
+      <a href="#" class="active">خانه</a>
+      <a href="#menu">منوی هوشمند</a>
+      <a href="#features">شخصی‌سازی</a>
+      <a href="#rewards">جوایز</a>
       <a href="#contact">تماس</a>
     </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" title="اعلان‌ها">🔔</button>
+      <button class="icon-btn" title="حساب کاربری">👤</button>
+    </div>
   </div>
 </header>
 
 <!-- ===== Hero ===== -->
 <section class="hero">
-  <div class="container hero-grid">
-
-    <!-- Left: App Preview -->
-    <div class="glass">
-      <div class="app-preview">
-        <div class="phone-card">
-          <div class="phone-header">
-            <span class="back">‹</span>
-            <span>Coffee</span>
-          </div>
-          <div class="view-menu-btn">View Menu</div>
-
-          <div class="icon-row">
-            <div class="icon-chip active">☕</div>
-            <div class="icon-chip">🥤</div>
-            <div class="icon-chip">🧋</div>
-            <div class="icon-chip">🍵</div>
-          </div>
-
-          <div class="phone-cups">
-            <div class="mini-cup">
-              <div class="cup-img"></div>
-              <h4>Americano</h4>
-              <p>100% Natural Arabica</p>
-              <div class="price-row">
-                <span>$2.50</span>
-                <span class="heart-icon">♡</span>
-              </div>
-            </div>
-            <div class="mini-cup">
-              <div class="cup-img heart"></div>
-              <h4>Cappuccino</h4>
-              <p>Coffee 50%, milk 50%</p>
-              <div class="price-row">
-                <span>$2.50</span>
-                <span class="heart-icon">♡</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="moccaccino-card">
-            <h4>Moccaccino</h4>
-            <p>Mix with Coffee 30%, milk 50%, water 20%</p>
-          </div>
-
-          <div class="bottom-nav">
-            <span class="active">🏠</span>
-            <span>🛒</span>
-            <span>👤</span>
-            <span>☰</span>
-          </div>
-        </div>
-
-        <div class="app-info">
-          <h3>App is Available</h3>
-          <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ،
-            و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه
-            و مجله در ستون و سطر آنچنان که لازم است.
-          </p>
-          <div class="store-buttons">
-            <div class="store-btn"></div>
-            <div class="store-btn">▶</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Right: Coffee Hero -->
-    <div class="coffee-hero">
-      <div class="logo-sm">
-        <span>☕</span>
-        <div>
-          Flavored
-          <small>Wake up to something special</small>
-        </div>
-      </div>
-
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <div class="badge-line">قهوه شخصی‌سازی‌شده</div>
       <h1>
-        Coffee
-        <span>The Best For You</span>
+        قهوه‌ات،<br>
+        مخصوص خودت
       </h1>
-
-      <button class="cta-btn">View Menu</button>
-
-      <div class="hero-icon-row">
-        <div class="icon-chip active">☕</div>
-        <div class="icon-chip">🧋</div>
-        <div class="icon-chip">🥤</div>
-        <div class="icon-chip">🍵</div>
-      </div>
-
-      <div class="big-cup"></div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== Menu Section ===== -->
-<section class="menu-section" id="menu">
-  <div class="container">
-    <h2 class="section-title">محبوب‌ترین‌های ما</h2>
-
-    <div class="menu-grid">
-
-      <div class="menu-item">
-        <div class="cup-photo"></div>
-        <h3>Americano</h3>
-        <p class="desc">100% Natural Arabica or Robusta</p>
-        <div class="actions">
-          <div class="action-btn">🛒</div>
-          <div class="action-btn">♡</div>
-        </div>
-        <div class="price-tag">$2.50</div>
-      </div>
-
-      <div class="menu-item">
-        <div class="cup-photo heart"></div>
-        <h3>Cappuccino</h3>
-        <p class="desc">Coffee 50%, milk 50%</p>
-        <div class="actions">
-          <div class="action-btn">🛒</div>
-          <div class="action-btn">♡</div>
-        </div>
-        <div class="price-tag">$2.50</div>
-      </div>
-
-      <div class="menu-item">
-        <div class="cup-photo leaf"></div>
-        <h3>Moccaccino</h3>
-        <p class="desc">Mix with Coffee, milk & water</p>
-        <div class="actions">
-          <div class="action-btn">🛒</div>
-          <div class="action-btn">♡</div>
-        </div>
-        <div class="price-tag">$2.50</div>
-      </div>
-
-      <div class="menu-item">
-        <div class="cup-photo swirl"></div>
-        <h3>Latte Grand</h3>
-        <p class="desc">Mix with Coffee 30%, milk 50%</p>
-        <div class="actions">
-          <div class="action-btn">🛒</div>
-          <div class="action-btn">♡</div>
-        </div>
-        <div class="price-tag">$3.50</div>
-      </div>
-
-      <div class="menu-item">
-        <div class="cup-photo heart"></div>
-        <h3>Mocha Deluxe</h3>
-        <p class="desc">Dark chocolate & espresso</p>
-        <div class="actions">
-          <div class="action-btn">🛒</div>
-          <div class="action-btn">♡</div>
-        </div>
-        <div class="price-tag">$3.80</div>
-      </div>
-
-      <div class="menu-item">
-        <div class="cup-photo"></div>
-        <h3>Espresso</h3>
-        <p class="desc">Pure Italian espresso shot</p>
-        <div class="actions">
-          <div class="action-btn">🛒</div>
-          <div class="action-btn">♡</div>
-        </div>
-        <div class="price-tag">$2.00</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== Bottom Section ===== -->
-<section class="bottom-grid container" id="reserve">
-
-  <!-- Reserve Card -->
-  <div class="reserve-card">
-    <span class="badge">LET'S TALK</span>
-    <h2>Want to Reserve a Table?</h2>
-    <p>
-      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-      از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطر
-      آنچنان که لازم است.
-    </p>
-    <button class="reserve-btn">Contact Now</button>
-  </div>
-
-  <!-- Detail Card -->
-  <div class="detail-card">
-    <div class="detail-img"></div>
-    <div class="detail-info">
-      <span class="badge-sm">LATTE GRAND</span>
-      <h3>Latte Grand</h3>
       <p>
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
-        و با استفاده از طراحان گرافیک است.
+        پیشنهادهای هوشمند بر اساس ذائقه، حال و هوای روز و ساعت شما.
       </p>
-      <div class="total-row">
-        <span>Total Price</span>
-        <strong>$3.50</strong>
+      <div class="hero-buttons">
+        <button class="btn btn-primary">امتحان سفارش سریع</button>
+        <button class="btn btn-outline">مشاهده منو</button>
       </div>
-      <div class="detail-actions">
-        <button class="add-cart-btn">Add to Cart ➕</button>
-        <div class="heart-btn">♡</div>
+    </div>
+
+    <div class="hero-image">
+      <!-- Floating icons -->
+      <div class="float-icon i4">📶</div>
+      <div class="float-icon i1">🧾</div>
+      <div class="float-icon i2">💳</div>
+      <div class="float-icon i3">📧</div>
+
+      <!-- Big Cup -->
+      <div class="big-cup">
+        <div class="cup-handle"></div>
+        <div class="big-cup-glass"></div>
+      </div>
+
+      <!-- Beans -->
+      <div class="beans-deco">
+        <div class="bean"></div>
+        <div class="bean"></div>
+        <div class="bean"></div>
       </div>
     </div>
   </div>
+</section>
 
+<!-- ===== AI Features ===== -->
+<section class="section" id="features">
+  <div class="container">
+    <h2 class="section-title">پیشنهادهای هوش مصنوعی</h2>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="card-badge">۰۱</div>
+        <div class="card-img p1"></div>
+        <h3>انرژی صبحگاهی</h3>
+        <p>ترکیبی ملایم با کافئین متعادل، عالی برای شروع روز شما.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-badge">۰۲</div>
+        <div class="card-img p2"></div>
+        <h3>قهوه حالت آرامش</h3>
+        <p>برای لحظه‌های استراحت، با طعمی گرم و دلنشین.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-badge">۰۳</div>
+        <div class="card-img p3"></div>
+        <h3>مطابقت طعم شیرین</h3>
+        <p>همیشه قهوه مورد علاقه‌ات را متناسب با سلیقه پیدا کن.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Smart Ordering ===== -->
+<section class="section" id="menu">
+  <div class="container">
+    <h2 class="section-title">سفارش هوشمند</h2>
+
+    <div class="smart-grid">
+
+      <div class="mini-order">
+        <div class="card-badge">۰۱</div>
+        <div class="card-img p1"></div>
+        <h3>انرژی صبحگاهی</h3>
+        <p>ترکیبی ملایم برای شروع روز</p>
+      </div>
+
+      <div class="mini-order">
+        <div class="card-badge">۰۲</div>
+        <div class="card-img p2"></div>
+        <h3>قهوه حالت آرامش</h3>
+        <p>برای لحظه‌های آرام و دلنشین</p>
+      </div>
+
+      <div class="order-panel">
+        <div class="option-icons">
+          <div class="option-icon">☕</div>
+          <div class="option-icon">🥤</div>
+          <div class="option-icon active">💧</div>
+          <div class="option-icon red">🌶️</div>
+        </div>
+
+        <div class="quantity-row">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <div class="qty-value" id="qtyValue">فولد</div>
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+
+        <button class="one-click-btn">سفارش با یک کلیک</button>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <!-- ===== Footer ===== -->
 <footer class="footer" id="contact">
   <div class="container">
+
     <div class="footer-inner">
+
       <div class="footer-brand">
-        <div class="logo">
-          <span class="logo-icon">☕</span>
-          <span>Flavored</span>
-        </div>
-        <p>Wake up to something special. بهترین قهوه‌های تخصصی در فضایی گرم و دنج.</p>
+        <div class="logo-circle">◎</div>
+        <h3>اورورا کافه هوشمند</h3>
+        <p>تجربه‌ای متفاوت از قهوه، با تکنولوژی هوش مصنوعی در خدمت سلیقه شما.</p>
       </div>
 
       <div class="footer-col">
-        <h4>Our Services</h4>
+        <h4>خانه</h4>
         <ul>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Tracking</a></li>
-          <li><a href="#">Report a Bug</a></li>
-          <li><a href="#">Terms of Services</a></li>
+          <li><a href="#">پیشنهاد هوشمند</a></li>
+          <li><a href="#">منوی ویژه</a></li>
+          <li><a href="#">دسته‌بندی‌ها</a></li>
+          <li><a href="#">جدیدترین‌ها</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Our Company</h4>
+        <h4>زیرمجموعه‌ها</h4>
         <ul>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Tracking</a></li>
-          <li><a href="#">Report a Bug</a></li>
-          <li><a href="#">Terms of Services</a></li>
+          <li><a href="#">شخصی‌سازی</a></li>
+          <li><a href="#">تخفیف‌ها</a></li>
+          <li><a href="#">امتیازات</a></li>
+          <li><a href="#">نظرات مشتریان</a></li>
         </ul>
       </div>
 
-      <div class="footer-col">
-        <h4>Address</h4>
-        <ul>
-          <li><a href="#">تهران، خیابان ولیعصر</a></li>
-          <li><a href="#">۰۲۱-۱۲۳۴۵۶۷۸</a></li>
-          <li><a href="#">info@flavored.ir</a></li>
-        </ul>
+      <div class="footer-cta">
+        <a href="#menu" class="footer-cta-btn">
+          <span class="arrow">‹</span>
+          <span>سفارش سریع شما</span>
+        </a>
       </div>
+
     </div>
 
     <div class="footer-bottom">
-      © ۱۴۰۴ Flavored | تمامی حقوق محفوظ است.
+      <span>© ۱۴۰۴ اورورا کافه هوشمند | تمامی حقوق محفوظ است.</span>
+      <div class="footer-socials">
+        <a href="#">🔗 لینکدین</a>
+        <a href="#">📷 اینستاگرام</a>
+        <a href="#">💬 واتساپ</a>
+      </div>
     </div>
+
   </div>
 </footer>
 
 <script>
-// Smooth scroll
+// ===== Quantity toggle =====
+let qty = 1;
+const qtyLabels = ['فولد', 'دو برابر', 'سه برابر', 'چهار برابر'];
+function changeQty(delta) {
+  qty = Math.max(1, Math.min(4, qty + delta));
+  document.getElementById('qtyValue').textContent = qtyLabels[qty - 1];
+}
+
+// ===== Option icons =====
+document.querySelectorAll('.option-icons .option-icon').forEach(icon => {
+  icon.addEventListener('click', () => {
+    document.querySelectorAll('.option-icons .option-icon').forEach(i => i.classList.remove('active'));
+    if (!icon.classList.contains('red')) icon.classList.add('active');
+  });
+});
+
+// ===== Smooth scroll =====
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
     const target = document.querySelector(link.getAttribute('href'));
@@ -1119,17 +970,15 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// Icon chip toggle
-document.querySelectorAll('.icon-row, .hero-icon-row').forEach(row => {
-  row.querySelectorAll('.icon-chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      row.querySelectorAll('.icon-chip').forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-    });
+// ===== Nav active state =====
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelectorAll('.nav-menu a').forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
   });
 });
 
-// Scroll reveal
+// ===== Scroll reveal =====
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1139,16 +988,11 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.menu-item, .glass, .reserve-card, .detail-card').forEach(el => {
+document.querySelectorAll('.feature-card, .mini-order, .order-panel').forEach((el, i) => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(30px)';
-  el.style.transition = 'all 0.7s ease';
+  el.style.transition = `all 0.6s ease ${i * 0.08}s`;
   observer.observe(el);
-});
-
-// Store buttons play icon
-document.querySelectorAll('.store-btn').forEach(btn => {
-  if (!btn.textContent.trim()) btn.textContent = '';
 });
 </script>
 </body>
