@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Flavored | کافه گلد</title>
+<title>Flavored | کافه گلد </title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -990,4 +990,166 @@ ul { list-style: none; }
         <p class="desc">Mix with Coffee 30%, milk 50%</p>
         <div class="actions">
           <div class="action-btn">🛒</div>
-          <div class="action-btn">
+          <div class="action-btn">♡</div>
+        </div>
+        <div class="price-tag">$3.50</div>
+      </div>
+
+      <div class="menu-item">
+        <div class="cup-photo heart"></div>
+        <h3>Mocha Deluxe</h3>
+        <p class="desc">Dark chocolate & espresso</p>
+        <div class="actions">
+          <div class="action-btn">🛒</div>
+          <div class="action-btn">♡</div>
+        </div>
+        <div class="price-tag">$3.80</div>
+      </div>
+
+      <div class="menu-item">
+        <div class="cup-photo"></div>
+        <h3>Espresso</h3>
+        <p class="desc">Pure Italian espresso shot</p>
+        <div class="actions">
+          <div class="action-btn">🛒</div>
+          <div class="action-btn">♡</div>
+        </div>
+        <div class="price-tag">$2.00</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Bottom Section ===== -->
+<section class="bottom-grid container" id="reserve">
+
+  <!-- Reserve Card -->
+  <div class="reserve-card">
+    <span class="badge">LET'S TALK</span>
+    <h2>Want to Reserve a Table?</h2>
+    <p>
+      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
+      از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطر
+      آنچنان که لازم است.
+    </p>
+    <button class="reserve-btn">Contact Now</button>
+  </div>
+
+  <!-- Detail Card -->
+  <div class="detail-card">
+    <div class="detail-img"></div>
+    <div class="detail-info">
+      <span class="badge-sm">LATTE GRAND</span>
+      <h3>Latte Grand</h3>
+      <p>
+        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ
+        و با استفاده از طراحان گرافیک است.
+      </p>
+      <div class="total-row">
+        <span>Total Price</span>
+        <strong>$3.50</strong>
+      </div>
+      <div class="detail-actions">
+        <button class="add-cart-btn">Add to Cart ➕</button>
+        <div class="heart-btn">♡</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-icon">☕</span>
+          <span>Flavored</span>
+        </div>
+        <p>Wake up to something special. بهترین قهوه‌های تخصصی در فضایی گرم و دنج.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Tracking</a></li>
+          <li><a href="#">Report a Bug</a></li>
+          <li><a href="#">Terms of Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Our Company</h4>
+        <ul>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Tracking</a></li>
+          <li><a href="#">Report a Bug</a></li>
+          <li><a href="#">Terms of Services</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Address</h4>
+        <ul>
+          <li><a href="#">تهران، خیابان ولیعصر</a></li>
+          <li><a href="#">۰۲۱-۱۲۳۴۵۶۷۸</a></li>
+          <li><a href="#">info@flavored.ir</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © ۱۴۰۴ Flavored | تمامی حقوق محفوظ است.
+    </div>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Icon chip toggle
+document.querySelectorAll('.icon-row, .hero-icon-row').forEach(row => {
+  row.querySelectorAll('.icon-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      row.querySelectorAll('.icon-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.menu-item, .glass, .reserve-card, .detail-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'all 0.7s ease';
+  observer.observe(el);
+});
+
+// Store buttons play icon
+document.querySelectorAll('.store-btn').forEach(btn => {
+  if (!btn.textContent.trim()) btn.textContent = '';
+});
+</script>
+</body>
+</html>
